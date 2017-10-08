@@ -15,8 +15,8 @@ it supports the Hangul lipogram.
       * [ ] Per user
    * [ ] Prevent trick
       * [ ] Insertion alphabet
-      * [ ] Use ya-min-jeong-um
-         * [ ] Build a ya-min-jeong-um database
+      * [ ] Use LEET(baseball gallery hangul)
+         * [ ] Build a LEET(baseball gallery hangul) database
       * [ ] Use special character
          * [ ] Build a special character database
 
