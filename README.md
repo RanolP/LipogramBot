@@ -19,11 +19,14 @@ it supports the Hangul lipogram.
          * [ ] Build a LEET(baseball gallery hangul) database
       * [ ] Use special character
          * [ ] Build a special character database
+ * [ ] Support multi-platform
+   * [ ] Telegram
+   * [ ] Discord
 
 ## 한국어
 > 문자를 피해요!
 
-**리포그램 봇**은 멀티플랫폼 리포그램 봇입니다.
+**리포그램 봇**은 다중 플랫폼 지원 리포그램 봇입니다.
 이 봇은 한글 리포그램을 지원합니다.
 
 ### 목표
@@ -37,3 +40,6 @@ it supports the Hangul lipogram.
          * [ ] 야민정음 데이터베이스 구축
       * [ ] 특수 문자 사용
          * [ ] 특수 문자 데이터베이스 구축
+ * [ ] 다중 플랫폼 지원
+   * [ ] Telegram
+   * [ ] Discord
