@@ -14,6 +14,6 @@ class Lipogram {
     }
 
     fun test(sentence: String): FilteredResult {
-        return filters.map { it.filter(sentence) }.fold(FilteredResult(listOf())) { a, b -> a + b }
+        return filters.map { it.filter(sentence) }.fold(FilteredResult(linkedSetOf())) { a, b -> a + b }
     }
 }
