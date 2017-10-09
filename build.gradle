@@ -1,5 +1,6 @@
 buildscript {
     ext.kotlin_version = '1.1.51'
+    ext.mainClassName = 'io.github.ranolp.lipogrambot.Main'
 
     repositories {
         mavenCentral()
@@ -10,7 +11,7 @@ buildscript {
 }
 
 group 'io.github.ranolp.lipogrambot'
-version '1.0-SNAPSHOT'
+version 'beta 1.0'
 
 apply plugin: 'kotlin'
 
@@ -21,6 +22,7 @@ repositories {
 
 dependencies {
     compile "org.jetbrains.kotlin:kotlin-stdlib-jre8:$kotlin_version"
+    compile "org.jetbrains.kotlin:kotlin-reflect:$kotlin_version"
     compile 'com.github.kittinunf.fuel:fuel:1.9.0'
     compile 'com.github.salomonbrys.kotson:kotson:2.5.0'
     testCompile 'junit:junit:4.12'
@@ -31,4 +33,27 @@ compileKotlin {
 }
 compileTestKotlin {
     kotlinOptions.jvmTarget = "1.8"
+}
+compileKotlin.doFirst {
+    def file = new File("$projectDir/src/main/kotlin/io/github/ranolp/lipogrambot/core/Project.kt")
+    file.createNewFile()
+    file.text = """package io.github.ranolp.core
+
+object Project {
+\tval VERSION = "$version"
+}
+"""
+}
+
+jar {
+    manifest {
+        attributes 'Title': 'LipogramBot', 'Version': version, 'Main-Class': mainClassName
+    }
+    dependsOn configurations.runtime
+    from {
+        configurations.compile.collect { it.isDirectory() ? it : zipTree(it) }
+    }
+    into 'resources', {
+        from 'resources'
+    }
 }
