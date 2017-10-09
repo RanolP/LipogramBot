@@ -14,9 +14,19 @@ it supports the Hangul lipogram.
       * [ ] Per group
       * [ ] Per user
    * [ ] Prevent trick
-      * [ ] Insertion alphabet
+      * [ ] Insert alphabet/number
       * [ ] Use LEET(baseball gallery hangul)
          * [ ] Build a LEET(baseball gallery hangul) database
+      * [ ] Use special character
+         * [ ] Build a special character database
+ * [ ] Support English lipogram
+   * [ ] Customize alphabet
+     * [ ] Per group
+     * [ ] Per user
+   * [ ] Prevent trick
+      * [ ] Insert number
+      * [ ] Use LEET
+         * [ ] Build a LEET database
       * [ ] Use special character
          * [ ] Build a special character database
  * [ ] Support multi-platform
@@ -35,9 +45,19 @@ it supports the Hangul lipogram.
       * [ ] 그룹별
       * [ ] 유저별
    * [ ] 꼼수 방지
-      * [ ] 영어 끼워넣기
+      * [ ] 영어/숫자 끼워넣기
       * [ ] 야민정음 사용
          * [ ] 야민정음 데이터베이스 구축
+      * [ ] 특수 문자 사용
+         * [ ] 특수 문자 데이터베이스 구축
+ * [ ] 영어 리포그램 지원
+   * [ ] 알파벳 커스터마이징
+     * [ ] 그룹별
+     * [ ] 유저별
+   * [ ] 꼼수 방지
+      * [ ] 숫자 끼워넣기
+      * [ ] LEET 사용
+         * [ ] LEET 데이터베이스 구축
       * [ ] 특수 문자 사용
          * [ ] 특수 문자 데이터베이스 구축
  * [ ] 다중 플랫폼 지원
