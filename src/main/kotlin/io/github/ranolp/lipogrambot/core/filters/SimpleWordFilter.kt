@@ -1,6 +1,7 @@
 package io.github.ranolp.lipogrambot.core.filters
 
 import io.github.ranolp.lipogrambot.core.LipogramFilter
+import io.github.ranolp.lipogrambot.core.filters.normalizers.NoNormalizer
 import io.github.ranolp.lipogrambot.core.result.FilteredResult
 import io.github.ranolp.lipogrambot.core.result.FilteredWord
 
@@ -33,14 +34,18 @@ class SimpleWordFilter : LipogramFilter {
     override fun filter(sentence: String): FilteredResult {
         val result = mutableListOf<FilteredWord>()
         sentence.split(' ').forEach { word ->
-            for ((index, ch) in word.withIndex()) {
-                normalizers.firstOrNull { it.filter(ch) }?.let {
+            val chars = mutableListOf<Char>()
+            for (ch in word) {
+                (normalizers.firstOrNull { it.filter(ch) } ?: NoNormalizer).let {
                     it.normalize(ch).filter { it in filterTarget }.forEach {
-                        result += FilteredWord(sentence, index, word, ch)
+                        chars += ch
                     }
                 }
             }
+            if (chars.isNotEmpty()) {
+                result += FilteredWord(word, chars)
+            }
         }
-        return FilteredResult(result.toList())
+        return FilteredResult(LinkedHashSet(result))
     }
 }
