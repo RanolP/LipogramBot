@@ -1,0 +1,14 @@
+{
+  "core": {
+    "log-level": "info",
+    "date-syntax": "hh:mm:ss"
+  },
+  "commands": {
+    "lipogram": true
+  },
+  "telegram": {
+    "use": true,
+    "bot-token": "INSERT TOKEN HERE",
+    "message-receiver-type": "LONG_POLLING"
+  }
+}
