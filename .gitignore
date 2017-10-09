@@ -6,3 +6,5 @@ build/
 \.gradle/
 
 out/
+
+src/main/kotlin/io/github/ranolp/lipogrambot/core/Project\.kt
