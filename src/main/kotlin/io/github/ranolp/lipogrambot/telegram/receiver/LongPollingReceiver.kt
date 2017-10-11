@@ -1,8 +1,8 @@
 package io.github.ranolp.lipogrambot.telegram.receiver
 
-import io.github.ranolp.lipogrambot.core.layer.LipogramGroup
-import io.github.ranolp.lipogrambot.core.layer.LipogramUser
 import io.github.ranolp.lipogrambot.general.Manager
+import io.github.ranolp.lipogrambot.layer.LipogramGroup
+import io.github.ranolp.lipogrambot.layer.LipogramUser
 import io.github.ranolp.lipogrambot.telegram.Telegram
 import io.github.ranolp.waffle.log.Logger
 

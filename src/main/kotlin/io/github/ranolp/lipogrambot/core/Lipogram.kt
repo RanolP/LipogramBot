@@ -1,19 +1,46 @@
 package io.github.ranolp.lipogrambot.core
 
+import io.github.ranolp.lipogrambot.core.normalizers.NoNormalizer
 import io.github.ranolp.lipogrambot.core.result.FilteredResult
+import io.github.ranolp.lipogrambot.core.result.FilteredWord
 
 class Lipogram {
-    private val filters = mutableListOf<LipogramFilter>()
+    private val normalizers = mutableListOf<WordNormalizer>()
+    private val filterTarget = mutableListOf<Char>()
 
-    @JvmName("addFilter") operator fun plusAssign(filter: LipogramFilter) {
-        filters += filter
+    val setting = mutableMapOf<String, Any>()
+
+    @JvmName("addFilterTarget") operator fun plusAssign(ch: Char) {
+        filterTarget += ch
     }
 
-    @JvmName("removeFilter") operator fun minusAssign(filter: LipogramFilter) {
-        filters -= filter
+    @JvmName("removeFilterTarget") operator fun minusAssign(ch: Char) {
+        filterTarget -= ch
+    }
+
+    @JvmName("addNormalizer") operator fun plusAssign(normalizer: WordNormalizer) {
+        normalizers += normalizer
+    }
+
+    @JvmName("removeNormalizer") operator fun minusAssign(normalizer: WordNormalizer) {
+        normalizers -= normalizer
     }
 
     fun test(sentence: String): FilteredResult {
-        return filters.map { it.filter(sentence) }.fold(FilteredResult(linkedSetOf())) { a, b -> a + b }
+        val result = mutableListOf<FilteredWord>()
+        sentence.split(' ').forEach { word ->
+            val chars = mutableListOf<Char>()
+            for (ch in word) {
+                (normalizers.firstOrNull { it.filter(ch) } ?: NoNormalizer).let {
+                    it.normalize(ch).filter { it in filterTarget }.forEach {
+                        chars += ch
+                    }
+                }
+            }
+            if (chars.isNotEmpty()) {
+                result += FilteredWord(word, chars)
+            }
+        }
+        return FilteredResult(LinkedHashSet(result))
     }
 }

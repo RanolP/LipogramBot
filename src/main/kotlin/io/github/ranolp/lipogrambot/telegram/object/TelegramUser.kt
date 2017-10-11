@@ -4,7 +4,7 @@ import com.github.salomonbrys.kotson.byLong
 import com.github.salomonbrys.kotson.byNullableString
 import com.github.salomonbrys.kotson.byString
 import com.google.gson.JsonObject
-import io.github.ranolp.lipogrambot.core.layer.LipogramUser
+import io.github.ranolp.lipogrambot.layer.LipogramUser
 import io.github.ranolp.lipogrambot.telegram.Telegram
 
 class TelegramUser(jsonObject: JsonObject) : LipogramUser() {
